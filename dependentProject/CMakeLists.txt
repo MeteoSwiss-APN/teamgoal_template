@@ -45,10 +45,9 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 ## Setup of Yoda
 ## ===-------------------------------------------------------------------------------------------===
 include(initializeYoda)
-initialize_yoda(BRANCH "master" SOURCE_DIR DEPENDENTPROJECT_YODA_SOURCE_DIR)
 
 ## We use the functionality provided in {yoda}/cmake
-list(APPEND CMAKE_MODULE_PATH "${DEPENDENTPROJECT_YODA_SOURCE_DIR}/cmake")
+list(APPEND CMAKE_MODULE_PATH "${YODA_SOURCE_DIR}/cmake")
 
 ## load all the funciton calls that we need
 include(yodaAddTargetCleanAll)

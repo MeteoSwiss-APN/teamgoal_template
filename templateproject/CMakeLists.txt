@@ -44,15 +44,15 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 ## ===-------------------------------------------------------------------------------------------===
 ## Setup of Yoda
 ## ===------------------------------------------------------------------------------------------===
-if(NOT(DEFINED YODA_ROOT))
-  message(FATAL_ERROR "YODA_ROOT not found! Try specifying it in the environment via -DYODA_ROOT=<>")
-endif()
+include(initializeYoda)
+initialize_yoda(BRANCH "master" SOURCE_DIR TESTPROJECT_YODA_SOURCE_DIR)
 
 ## We use the functionality provided in {yoda}/cmake
-list(APPEND CMAKE_MODULE_PATH "${YODA_ROOT}/cmake")
+list(APPEND CMAKE_MODULE_PATH "${TESTPROJECT_YODA_SOURCE_DIR}/cmake")
 
 ## load all the funciton calls that we need
 include(yodaInit)
+include(yodaAddTargetCleanAll)
 
 ## Initialize yoda
 yoda_init()
@@ -60,11 +60,7 @@ yoda_init()
 # Add custom targets
 yoda_add_target_clean_all()
 
-## ===-------------------------------------------------------------------------------------------===
-## Include the project specific options, definitions and macros
-## ===-------------------------------------------------------------------------------------------===
-include(templateprojectOptions)
-include(templateprojectMacros)
+
 
 
 ## ===-------------------------------------------------------------------------------------------===
@@ -81,6 +77,12 @@ make_config_string("Compiler" ${YODA_COMPILER_STRING})
 make_config_string("Build type" ${CMAKE_BUILD_TYPE})
 
 yoda_report_result("Configuration summary" ${config_info})
+
+## ===-------------------------------------------------------------------------------------------===
+## Include the project specific options, definitions and macros
+## ===-------------------------------------------------------------------------------------------===
+include(templateprojectOptions)
+include(templateprojectMacros)
 
 ## ===-------------------------------------------------------------------------------------------===
 ## Finding an External Package, this example requires program_options from boost

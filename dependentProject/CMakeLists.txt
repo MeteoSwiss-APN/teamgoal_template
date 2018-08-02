@@ -44,12 +44,10 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 ## ===-------------------------------------------------------------------------------------------===
 ## Setup of Yoda
 ## ===-------------------------------------------------------------------------------------------===
-if(NOT(DEFINED YODA_ROOT))
-  message(FATAL_ERROR "YODA_ROOT not found! Try specifying it in the environment via -DYODA_ROOT=<>")
-endif()
+initialize_yoda(BRANCH "master" SOURCE_DIR DEPENDENTPROJECT_YODA_SOURCE_DIR)
 
 ## We use the functionality provided in {yoda}/cmake
-list(APPEND CMAKE_MODULE_PATH "${YODA_ROOT}/cmake")
+list(APPEND CMAKE_MODULE_PATH "${DEPENDENTPROJECT_YODA_SOURCE_DIR}/cmake")
 
 ## load all the funciton calls that we need
 include(yodaAddTargetCleanAll)

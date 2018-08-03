@@ -54,11 +54,14 @@ else()
     endmacro()
 
     # Clone repository
-    message(STATUS "Cloning yoda from git: https://github.com/MeteoSwiss-APN/yoda.git ...")
-    run_git("clone" "https://github.com/MeteoSwiss-APN/yoda.git" "--branch=${branch}" ${source_dir})
+    ## Move to this once we have it in master
+    # message(STATUS "Cloning yoda from git: https://github.com/MeteoSwiss-APN/yoda.git ...")
+    # run_git("clone" "https://github.com/MeteoSwiss-APN/yoda.git" "--branch=${branch}" ${source_dir})
+    message(STATUS "Cloning yoda from git: https://github.com/cosunae/yoda.git ...")
+    run_git("clone" "https://github.com/cosunae/yoda.git" "--branch=create_library" ${source_dir})
     message(STATUS "Successfully cloned yoda")
 
-    set("${YODA_SOURCE_DIR}" "${source_dir}")
+    set(YODA_SOURCE_DIR "${source_dir}")
   endif()
 endif()
 

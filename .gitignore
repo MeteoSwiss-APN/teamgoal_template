@@ -1,0 +1,25 @@
+*.pyc
+*.log
+*.old
+*.out
+*.DS_Store
+*.~
+*~
+*.user
+*.project
+.idea
+
+# Build directories
+build*/
+install*/
+
+# Meta project information
+yoda/*
+
+# Shared library in source dir
+*.so
+*.dylib
+*.dll
+
+# Ignore gh-pages folder
+gh-pages*
